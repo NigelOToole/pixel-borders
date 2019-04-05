@@ -15,7 +15,7 @@ const isDev = !isProd && !isTest;
 
 const paths = {
   src: 'src',
-  dest: 'dist',
+  dest: 'docs',
   tmp: '.tmp',
   gulp: './tasks/gulp'
 };
