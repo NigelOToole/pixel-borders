@@ -1,0 +1,10 @@
+# Dependencies
+node_modules
+
+# Compiled output
+/.tmp
+/zip
+
+# System Files
+.DS_Store
+Thumbs.db

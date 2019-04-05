@@ -1,0 +1,35 @@
+{
+  "name": "pixel-borders",
+  "description": "A SASS mixin to create pixelated borders on elements.",
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=4"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.4.4",
+    "browser-sync": "^2.2.1",
+    "cross-env": "^5.2.0",
+    "del": "^3.0.0",
+    "gulp": "^4.0.0",
+    "gulp-cli": "^2.0.1",
+    "gulp-filter": "^5.1.0",
+    "gulp-if": "^2.0.2",
+    "gulp-load-plugins": "^1.2.4",
+    "gulp-plumber": "^1.0.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-size": "^3.0.0",
+    "gulp-sourcemaps": "^2.2.0",
+    "yargs": "12.0.5"
+  },
+  "scripts": {
+    "start": "gulp serve",
+    "build": "cross-env NODE_ENV=production gulp",
+    "tasks": "gulp --tasks"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "Firefox ESR"
+  ]
+}
