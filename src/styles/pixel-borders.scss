@@ -94,14 +94,11 @@
 }
 
 
-// ($corner-size: 1, $border-size: 4px, $border-color: #000, $border-inset-color: false)
-// ($border-inset-size: 4px, $border-inset-color: #ddd, $border-inset-sides: 'bottom-right', $border-inset-color-br: false, $border-inset-color-tl: false)
 
-// Pixel box - Colours for border and inset are calulated using $background-color unless $border-color is passed
+// Pixel box - Colours for border and inset are calculated using $background-color unless $border-color is passed
 @mixin pixel-box($corner-size, $border-size, $background-color, $border-color: false, $border-inset: true, $border-inset-size: false, $border-inset-color: false, $border-inset-sides: false, $border-inset-color-br: false, $border-inset-color-tl: false) {
   
   $background-color-hover: darken($background-color, 5);
-  // $border-inset-color: '';
 
   @if not($border-color) {
     $border-color: darken($background-color, 20);
@@ -137,9 +134,7 @@
 
 
 
-
-
-// Demo styles
+// ----- Demo styles -----
 .pixel-borders {
   position: relative;
   display: inline-block;
