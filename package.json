@@ -1,10 +1,8 @@
 {
   "name": "pixel-borders",
-  "description": "A SASS mixin to create pixelated borders on elements.",
-  "version": "1.0.0",
-
+  "description": "A SASS mixin to add pixelated borders to HTML elements.",
+  "version": "1.0.1",
   "main": "src/styles/pixel-borders.scss",
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NigelOToole/pixel-borders.git"
@@ -13,10 +11,8 @@
     "url": "https://github.com/NigelOToole/pixel-borders/issues"
   },
   "homepage": "https://github.com/NigelOToole/pixel-borders#readme",
-
   "author": "Nigel O Toole <pure@purestructure.com> (http://www.purestructure.com)",
   "license": "MIT",
-
   "keywords": [
     "sass",
     "mixin",
@@ -25,7 +21,6 @@
     "borders",
     "css"
   ],
-  
   "engines": {
     "node": ">=4"
   },
