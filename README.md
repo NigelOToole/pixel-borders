@@ -60,10 +60,10 @@ After adding the repo as a dependency you can import it into your SASS files. Al
 
 ### pixel-box
 
-Options as above unless otherwise specified.
-
 | Property                 | Default                       | Type                     | Description                                                              |
 | ------------------------ | ----------------------------- | ------------------------ | ------------------------------------------------------------------------ |
+| `$corner-size`           |                               | Number                  | Number of pixels taken out of the corner.                                 |
+| `$border-size`           |                               | Number(px)              | Border size.                                                              |
 | `$background-color`      |                               | Hexadecimal color        | Background colour for the box, this is used as a base for colour theme.  |
 | `$border-color`          | Darkened `$background-color`  | False/Hexadecimal colour | Border colour.                                                           |
 | `$border-inset`          | true                          | Boolean                  | Add a inset border.                                                      |

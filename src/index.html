@@ -95,24 +95,24 @@
 
 // Available options
 @include pixel-borders(
-  $corner-size: 1,                 
-  $border-size: 4px,              
-  $border-color: #000,            
+  $corner-size: 1,
+  $border-size: 4px,
+  $border-color: #000,
   $border-inset-color: false
 );
 
 // Helper method to create custom styles e.g. colour themes, inset border, highlight
 @include pixel-box(
   $corner-size,
-  $border-size, 
-  $background-color,              
-  $border-color: false,           
-  $border-inset: true,            
-  $border-inset-size: false,      
-  $border-inset-color: false,     
-  $border-inset-sides: false,     // Sides to apply inset border: 'all', 'top-left' or 'bottom-right'
-  $border-inset-color-br: false,  // Bottom right inset border colour
-  $border-inset-color-tl: false   // Top left inset border colour
+  $border-size,
+  $background-color,
+  $border-color: false,
+  $border-inset: true,
+  $border-inset-size: false,
+  $border-inset-color: false,
+  $border-inset-sides: false,
+  $border-inset-color-br: false,
+  $border-inset-color-tl: false 
 );
 </code></pre>
 
@@ -152,7 +152,6 @@
       </table>
 
       <h3>pixel-box</h3>
-      <p>Options as above unless otherwise specified.</p>
 
       <table class="table">
         <tr>
@@ -160,6 +159,18 @@
           <th>Default</th>
           <th>Type</th>
           <th>Description</th>
+        </tr>
+        <tr>
+          <td><code>$corner-size</code></td>
+          <td></td>
+          <td>Number</td>
+          <td>Number of pixels taken out of the corner.</td>
+        </tr>
+        <tr>
+          <td><code>$border-size</code></td>
+          <td></td>
+          <td>Number(px)</td>
+          <td>Border size.</td>
         </tr>
         <tr>
           <td><code>$background-color</code></td>
