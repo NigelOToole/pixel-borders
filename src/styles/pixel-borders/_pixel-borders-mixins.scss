@@ -1,0 +1,133 @@
+// Generate SVG image for pixelated corners
+@function pixel-borders-image($corner-size, $color) {
+  $svg: '';
+  $svg-path: '';
+  $svg-size: $corner-size * 6;
+  $color: str-replace('' + $color, '#', '%23');
+
+  @if $corner-size == 1 {
+    $svg-path: 'M0 2h2v2H0zM2 0h2v2H2zM4 2h2v2H4zM2 4h2v2H2z';
+  } @else {
+    $svg-path: 'M2 2h2v2H2zM4 0h2v2H4zM10 4h2v2h-2zM0 4h2v2H0zM6 0h2v2H6zM8 2h2v2H8zM8 8h2v2H8zM6 10h2v2H6zM0 6h2v2H0zM10 6h2v2h-2zM4 10h2v2H4zM2 8h2v2H2z';
+  }
+
+  $svg: 'data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'#{$svg-size}\' height=\'#{$svg-size}\'><path d=\'#{$svg-path}\' fill=\'#{$color}\' /></svg>';
+
+  @return $svg;
+}
+
+
+// String replace function - replace `$search` with `$replace` in `$string`
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+
+// Pixel border
+@mixin pixel-borders($corner-size: 1, $border-size: 4px, $border-color: #000, $border-inset-color: false) {
+
+  @supports (border-image-source: none) {
+    border-radius: ($border-size * ($corner-size + 2)) + ($corner-size * 2);
+  }
+
+  border-style: solid;
+  border-width: $border-size;
+  border-color: $border-color;
+
+  border-image-slice: $corner-size * 2;
+  border-image-width: $corner-size;
+  border-image-outset: 0;
+
+  border-image-source: url(pixel-borders-image($corner-size, $border-color));
+
+  @if $border-inset-color {
+    @include pixel-inset-border($border-size, $border-inset-color);
+  }
+
+}
+
+
+// Pixel inset border
+@mixin pixel-inset-border($border-inset-size: 4px, $border-inset-color: #ddd, $border-inset-sides: 'bottom-right', $border-inset-color-br: false, $border-inset-color-tl: false) {
+
+  $box-shadow: '';
+  @if not($border-inset-color-br) {
+    $border-inset-color-br: $border-inset-color;
+  }
+
+  @if not($border-inset-color-tl) {
+    $border-inset-color-tl: $border-inset-color;
+  }
+
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+
+    @if $border-inset-sides == 'bottom-right' or $border-inset-sides == false {
+      $box-shadow: inset -#{$border-inset-size} -#{$border-inset-size} $border-inset-color-br;
+    }
+
+    @if $border-inset-sides == 'top-left' {
+      $box-shadow: inset $border-inset-size $border-inset-size $border-inset-color-tl;
+    }
+
+    @if $border-inset-sides == 'all' {
+      $box-shadow: inset -#{$border-inset-size} -#{$border-inset-size} $border-inset-color-br, inset $border-inset-size $border-inset-size $border-inset-color-tl;
+    }
+
+    box-shadow: $box-shadow;
+  }
+
+}
+
+
+
+// Pixel box - Colours for border and inset are calculated using $background-color unless $border-color is passed
+@mixin pixel-box($corner-size, $border-size, $background-color, $border-color: false, $border-inset: true, $border-inset-size: false, $border-inset-color: false, $border-inset-sides: false, $border-inset-color-br: false, $border-inset-color-tl: false) {
+  
+  $background-color-hover: darken($background-color, 5);
+
+  @if not($border-color) {
+    $border-color: darken($background-color, 20);
+  }
+
+  @include pixel-borders($corner-size: $corner-size, $border-size: $border-size, $border-color: $border-color);
+
+  @if $border-inset-sides == 'all' and not($border-inset-color) {
+    $border-inset-color-br: darken($background-color, 10);
+    $border-inset-color-tl: lighten($background-color, 15);
+  }
+
+  @if not($border-inset-color) { 
+    $border-inset-color: darken($background-color, 10);
+  }
+
+  @if $border-inset-sides == 'top-left' {
+    $border-inset-color: lighten($background-color, 15);
+  }
+
+
+  @if $border-inset { 
+    @include pixel-inset-border($border-inset-size: $border-size, $border-inset-color: $border-inset-color, $border-inset-sides: $border-inset-sides, $border-inset-color-br: $border-inset-color-br, $border-inset-color-tl: $border-inset-color-tl);
+  }
+
+  background-color: $background-color;
+
+  &:hover, &:focus {
+    background-color: $background-color-hover;
+  }
+
+}

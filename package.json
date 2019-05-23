@@ -1,7 +1,7 @@
 {
   "name": "pixel-borders",
-  "description": "A SASS mixin to add pixelated borders to HTML elements.",
-  "version": "1.0.1",
+  "description": "SASS mixin to add pixelated borders to HTML elements.",
+  "version": "1.1.0",
   "main": "src/styles/pixel-borders.scss",
   "repository": {
     "type": "git",
@@ -24,31 +24,28 @@
   "engines": {
     "node": ">=4"
   },
-  "devDependencies": {
-    "autoprefixer": "^9.4.4",
-    "browser-sync": "^2.2.1",
-    "cross-env": "^5.2.0",
-    "del": "^3.0.0",
-    "gulp": "^4.0.0",
-    "gulp-cli": "^2.0.1",
-    "gulp-filter": "^5.1.0",
-    "gulp-if": "^2.0.2",
-    "gulp-load-plugins": "^1.2.4",
-    "gulp-plumber": "^1.0.1",
-    "gulp-postcss": "^8.0.0",
-    "gulp-sass": "^4.0.2",
-    "gulp-size": "^3.0.0",
-    "gulp-sourcemaps": "^2.2.0",
-    "yargs": "12.0.5"
-  },
-  "scripts": {
-    "start": "gulp serve",
-    "build": "cross-env NODE_ENV=production gulp",
-    "tasks": "gulp --tasks"
-  },
   "browserslist": [
     "> 1%",
     "last 2 versions",
     "Firefox ESR"
-  ]
+  ],
+  "devDependencies": {
+    "autoprefixer": "^9.4.4",
+    "browser-sync": "^2.26.5",
+    "cross-env": "^5.2.0",
+    "del": "^3.0.0",
+    "gulp": "^4.0.0",
+    "gulp-cli": "^2.0.1",
+    "gulp-if": "^2.0.2",
+    "gulp-load-plugins": "^1.5",
+    "gulp-plumber": "^1.0.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.2.0",
+    "yargs": "^12.0.5"
+  },
+  "scripts": {
+    "start": "gulp serve",
+    "build": "cross-env NODE_ENV=production gulp"
+  }
 }

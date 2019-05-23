@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pixel borders - A SASS mixin to add pixelated borders to HTML elements</title>
+    <title>Pixel borders - SASS mixin to add pixelated borders to HTML elements</title>
 
     <link rel="stylesheet" href="styles/site.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cutive+Mono|Lato:300,400">
@@ -30,7 +30,7 @@
 
     <div class="fullwidth">
       <div class="container separator">
-        <h2 class="m-0">A SASS mixin to add pixelated borders to HTML elements, which can be customized for different sizes, colour coding,inset borders.</h2>
+        <h2 class="m-0">A SASS mixin to add pixelated borders to HTML elements, which can be customized for different sizes, styles and colour coding.</h2>
       </div>
     </div>
 
@@ -84,9 +84,13 @@
 
       <h3>Import</h3>
 
-      <p>After adding the repo as a dependency you can import it into your SASS files. Alternatively you can download the pixel-borders.scss from this repo and add it to your project folder directly.</p>
+      <p>After installation you can import it into your SASS files with the statement below.</p>
 
-<pre><code>@import "node_modules/pixel-borders/src/styles/pixel-borders.scss";</code></pre>
+<pre><code>@import "pixel-borders/src/styles/pixel-borders.scss";</code></pre>
+
+      <p>You can also just import the mixins without the demo styles.</p>
+
+<pre><code>@import "pixel-borders/src/styles/pixel-borders/pixel-borders-mixins";</code></pre>
 
 
       <h4>Pixel borders mixin options</h4>

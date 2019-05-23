@@ -1,11 +1,12 @@
 // ----- Imports and variables ------
 const { src, dest, watch, series, parallel, lastRun } = require('gulp');
 const gulpLoadPlugins = require('gulp-load-plugins');
+const $ = gulpLoadPlugins();
 const browserSync = require('browser-sync');
+const server = browserSync.create();
 const del = require('del');
 const { argv } = require('yargs');
-const $ = gulpLoadPlugins();
-const server = browserSync.create();
+const autoprefixer = require('autoprefixer');
 
 const port = argv.port || 9000;
 
@@ -16,60 +17,30 @@ const isDev = !isProd && !isTest;
 const paths = {
   src: 'src',
   dest: 'docs',
-  tmp: '.tmp',
-  gulp: './tasks/gulp'
+  tmp: '.tmp'
 };
 
 
-// ----- Import tasks ------
-function getTask(task) {
-	return require(`${paths.gulp}/${task}.js`)({ src, dest }, $, paths, isProd, server);
-}
+// ----- Tasks ------
+function styles() {
+  return src(`${paths.src}/styles/*.scss`)
+    .pipe($.plumber())
+    .pipe($.if(!isProd, $.sourcemaps.init()))
+    .pipe($.sass.sync({
+      outputStyle: 'expanded',
+      precision: 10,
+      includePaths: ['.']
+    })
+    .on('error', $.sass.logError))
+    .pipe($.postcss([
+      autoprefixer()
+    ]))
+    .pipe($.if(!isProd, $.sourcemaps.write()))
+    .pipe(dest(`${paths.tmp}/styles`))
+    .pipe(server.reload({stream: true}));
+};
 
-const { styles } = getTask('styles'); 
 exports.styles = styles;
-
-const { images } = getTask('images'); 
-exports.images = images;
-
-
-// ----- Build tasks ------
-function compress() {
-  return src([`${paths.src}/*.html`, `${paths.tmp}/*/**/*.{html,css,js}`])
-    // .pipe($.useref({searchPath: [`${paths.tmp}`, `${paths.src}`, '.']}))
-    // .pipe($.if(/\.js$/, $.uglify({compress: {drop_console: true}})))
-    // .pipe($.if(/\.css$/, $.postcss([cssnano({safe: true, autoprefixer: false})])))
-    // .pipe($.if(/\.html$/, $.htmlmin({
-    //   collapseWhitespace: true,
-    //   minifyCSS: true,
-    //   minifyJS: {compress: {drop_console: true}},
-    //   processConditionalComments: true,
-    //   removeComments: true,
-    //   removeEmptyAttributes: true,
-    //   removeScriptTypeAttributes: true,
-    //   removeStyleLinkTypeAttributes: true
-    // })))
-    .pipe(dest(`${paths.dest}`));
-}
-
-function clean() {
-  return del([`${paths.tmp}`, `${paths.dest}`])
-}
-exports.clean = clean;
-
-function measureSize() {
-  return src(`${paths.dest}/**/*`)
-    .pipe($.size({title: 'build', gzip: true}));
-}
-
-const build = series(
-  clean,
-  parallel(
-    series(parallel(styles), compress),
-    images
-  ),
-  measureSize
-);
 
 
 // ----- Serve tasks ------
@@ -89,23 +60,30 @@ function startAppServer() {
   });
 
   watch([
-    `${paths.src}/*.html`,
-    `${paths.src}/images/**/*`
+    `${paths.src}/*.html`
   ]).on('change', server.reload);
 
   watch(`${paths.src}/**/*.scss`, styles);
 }
 
 
-let serve;
-if (isDev) {
-  serve = series(clean, parallel(styles), startAppServer);
-} else if (isProd) {
-  serve = series(build, startDistServer);
-}
-
+let serve = series(clean, styles, startAppServer);
 exports.serve = serve;
 
+
+// ----- Build tasks ------
+function compress() {
+  return src([`${paths.src}/*.html`, `${paths.tmp}/*/**/*.{html,css,js}`])
+    .pipe(dest(`${paths.dest}`));
+}
+
+function clean() {
+  return del([`${paths.tmp}`, `${paths.dest}`])
+}
+
+exports.clean = clean;
+
+const build = series(clean, styles, compress);
+
 exports.build = build;
-exports.dist = build;
 exports.default = build;

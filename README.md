@@ -2,7 +2,7 @@
 
 [Live demo](http://nigelotoole.github.io/pixel-borders/)
 
-## A SASS mixin to add pixelated borders to HTML elements, which can be customized for different sizes, colour coding,inset borders.
+## A SASS mixin to add pixelated borders to HTML elements, which can be customized for different sizes, styles and colour coding.
 
 
 ## Installation
@@ -14,10 +14,16 @@ $ npm install pixel-borders --save-dev
 
 ### Import
 
-After adding the repo as a dependency you can import it into your SASS files. Alternatively you can download the pixel-borders.scss from this repo and add it to your project folder directly.
+After installation you can import it into your SASS files with the statement below.
 
 ```scss
-@import "node_modules/pixel-borders/src/styles/pixel-borders.scss";
+@import "pixel-borders/src/styles/pixel-borders.scss";
+```
+
+You can also just import the mixins without the demo styles.
+
+```scss
+@import "pixel-borders/src/styles/pixel-borders/pixel-borders-mixins";
 ```
 
 #### Pixel borders mixin options
