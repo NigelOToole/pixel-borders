@@ -96,3 +96,7 @@ Clone or download from Github.
 ### Credits
 
 Inspired by the excellent [NES.css](https://nostalgic-css.github.io/NES.css/) which is a full NES-style CSS framework. Pixel borders is intended to be used where only the borders are required.
+
+
+### License
+MIT © Nigel O Toole
