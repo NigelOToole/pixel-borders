@@ -1,7 +1,7 @@
 {
   "name": "pixel-borders",
   "description": "Sass mixin to add pixelated borders to HTML elements.",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "main": "src/styles/pixel-borders.scss",
   "repository": {
     "type": "git",
