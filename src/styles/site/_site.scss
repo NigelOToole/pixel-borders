@@ -7,7 +7,7 @@
 }
 
 body {
-  font-family: "Lato", -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-family: "Open Sans", -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";; 
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -26,8 +26,9 @@ a {
   }
 }
 
-// Type
+
 h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
   font-weight: 300;
 
   small {
@@ -35,12 +36,13 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-h1, h2 {
-  margin: 0 0 1rem 0;
+h1, h2, h3 {
+  margin: 0 0 1.5rem 0;
 }
 
-h3, h4, h5, h6 {
-  margin: 0 0 .5rem 0;
+h4, h5, h6 {
+  margin: 0 0 1rem 0;
+  font-weight: 400;
 }
 
 h1 { font-size: 2.5rem; }
@@ -75,9 +77,16 @@ pre {
   border-radius: 4px;
 }
 
+
+.table-wrapper {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+}
+
 .table {
   width: 100%;
-  margin: 0 0 1rem 0;
+  margin: 0 0 1.5rem 0;
   border-collapse: collapse;
 
   th, td {
@@ -140,15 +149,14 @@ pre {
     padding: 1rem 0;
   }
 
-
   .container {
     display: flex;
-
-    @media (max-width: 767px) {
+    
+    @media (max-width: 575px) {
       flex-flow: column;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 576px) {
       align-items: center;
     }
   }
@@ -173,7 +181,7 @@ pre {
       }
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 576px) {
       margin-left: auto;
     }
   }
