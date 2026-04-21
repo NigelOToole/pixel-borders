@@ -1,0 +1,68 @@
+@font-face {
+  font-family: 'Press Start 2P';
+  src: url('../fonts/press-start-2p.woff2') format('woff2');
+  display: swap;
+}
+
+.pixel-borders {
+  --pb-size: 1;
+  --pb-border-width: 4px;
+  --pb-border-color: #999;
+  --pb-border-image-width: calc(var(--pb-size) + 1);
+  --pb-background-color: #fff;
+
+  --pb-border-inset-size: round(up, calc(100% - (var(--pb-border-width) * ((var(--pb-size) - 1) * 2))), 1px);
+  --pb-border-inset-highlight-color: color-mix(in oklch, var(--pb-background-color), #ffffff 10%);
+  --pb-border-inset-shadow-color: color-mix(in oklch, var(--pb-background-color), #000000 10%);
+  
+  display: inline-block;
+  padding: 16px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-family: 'Press Start 2P', Arial Black, Arial Bold, Arial, sans-serif;
+  color: #000;
+  text-decoration: none;
+  background-color: var(--pb-background-color);
+  transition: all 0.25s ease;
+  
+  border-style: solid;
+  border-width: var(--pb-border-width);
+  border-color: var(--pb-border-color);
+
+  border-image-width: var(--pb-border-image-width);
+  border-image-slice: var(--pb-border-image-width);
+  
+  border-radius: round(calc(var(--pb-border-width) * (var(--pb-border-image-width) * 1.7)), 1px);
+
+  @supports (corner-shape: bevel) {
+    corner-shape: bevel;
+    border-radius: calc(var(--pb-border-width) * var(--pb-border-image-width));
+  }
+
+  &:hover, &:focus {
+    background-color: color-mix(in oklch, var(--pb-background-color), #000000 5%);
+  }
+}
+
+.pixel-borders--inset {
+  position: relative;
+  
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    place-self: center;
+    z-index: 0;
+    pointer-events: none;
+    width: round(up, 100%, 1px);
+    height: round(up, 100%, 1px);
+  }
+
+  &::before {
+    height: var(--pb-border-inset-size);
+  }
+
+  &::after {
+    width: var(--pb-border-inset-size);
+  }
+}

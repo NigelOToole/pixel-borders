@@ -3,268 +3,189 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pixel borders - Sass mixin to add pixelated borders to HTML elements</title>
+    
+    <title>Pixel Borders</title>
+    <meta name="description" content="Add pixelated borders to HTML elements and customize with different sizes, colours and styles.">
 
-    <link rel="stylesheet" href="styles/site.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cutive+Mono|Open+Sans:300,400|Press+Start+2P&display=swap">
+    <meta property="og:title" content="Pixel Borders"> 
+    <meta property="og:description" content="Add pixelated borders to HTML elements and customize with different sizes, colours and styles.">
+    <meta property="og:site_name" content="Pixel Borders">
+    <meta property="og:url" content="https://nigelotoole.github.io/pixel-borders/">
+    <meta property="og:image" content="https://nigelotoole.github.io/pixel-borders/images/pixel-borders-social.png"> 
+    <meta property="og:image:alt" content="Pixel Borders">
+    <meta name="twitter:card" content="summary_large_image">
+  
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
 
+    <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/pixel-borders.css">
   </head>
 
 
   <body>
 
-    <header class="header">
+    <header class="header fullwidth space--sm">
       <div class="container">
+        <h1 class="logo-text">Pixel Borders</h1> 
 
-        <h1 class="logo-text">Pixel borders</h1>
-
-        <div class="header-links">
-          <a href="https://github.com/NigelOToole/pixel-borders/archive/master.zip" class="btn-demo btn-demo--white">Download</a>
-          <a href="https://github.com/NigelOToole/pixel-borders" target="_blank" rel="noopener" class="btn-demo btn-demo--white">View on GitHub</a>
-        </div>
+        <nav class="nav header-nav">
+          <a href="https://github.com/nigelotoole/pixel-borders/archive/master.zip" class="btn btn--green btn--ghost"><span>Download</span></a>
+          <a href="https://github.com/nigelotoole/pixel-borders" target="_blank" rel="noopener" class="btn btn--green btn--ghost"><span>GitHub <svg class="icon" viewbox="0 0 24 24"><path d="M7 7h8.586L5.293 17.293l1.414 1.414L17 8.414V17h2V5H7v2z"/></svg></span> 
+            </a>
+        </nav>
       </div>
     </header>
 
 
-    <div class="fullwidth">
-      <div class="container separator">
-        <h2 class="m-0">A Sass mixin to add pixelated borders to HTML elements, which can be customized for different sizes, styles and colour coding.</h2>
-      </div>
-    </div>
+    <main id="main" class="main">
+      <section class="fullwidth intro">
+        <div class="container content flow">
+          
+          <div class="heading page-intro">
+            <h2 class="page-heading">Add pixelated borders to HTML elements and customize with different sizes, colours and styles.</h2>
 
+            <img src="images/pixel-borders-logo.svg" class="page-intro-img" width="80" height="80" alt="Pixel Borders logo">
+          </div>
 
-    <div class="fullwidth">
-      <div class="container separator">
-        
-        <h2>Basic examples</h2> 
-        <div class="pixel-borders pixel-borders--1">Pixel border 1</div>
-        <div class="pixel-borders pixel-borders--1 pixel-borders--1-inset">Pixel inset 1</div>
-        <br>
-
-        <div class="pixel-borders pixel-borders--2">Pixel border 2</div>
-        <div class="pixel-borders pixel-borders--2-inset">Pixel inset 2</div>
-        <br><br>
-
-        <h2>Colour themed examples</h2>
-        <button class="pixel-borders pixel-box--light">Pixel light</button>
-        <button class="pixel-borders pixel-box--primary">Pixel primary</button>
-        <button class="pixel-borders pixel-box--success">Pixel success</button>
-        <button class="pixel-borders pixel-box--warning">Pixel warning</button>
-        <button class="pixel-borders pixel-box--error">Pixel error</button>
-        <br><br>
-
-        <h2>Customisation examples</h2>
-        <button class="pixel-borders pixel-box--light-custom">Custom inset</button>
-        <button class="pixel-borders pixel-box--primary-custom">No inset</button>
-        <button class="pixel-borders pixel-box--success-custom">Highlight</button>
-        <button class="pixel-borders pixel-box--warning-custom">Inset & Highlight</button>
-        <button class="pixel-borders pixel-box--error-custom">Custom border</button>
-
-      </div>
-    </div>
-
-
-    <div class="fullwidth">
-      <div class="container separator">
-
-        <div class="subsection">
-          <h2>Installation</h2>
-
-<pre>
-<code>$ npm install pixel-borders --save-dev</code>
-</pre>
+          <h3>Features</h3> 
+          <ul class="columns-sm-2">
+            <li>SASS, PostCSS and CSS</li>
+            <li>Four sizes</li>
+            <li>Colour themes</li>
+            <li>Highlight and shadow</li>
+          </ul>
 
         </div>
-
-      <div class="subsection">
-        
-        <h2>Usage</h2>
-
-        <h3>Import</h3>
-
-        <p>After installation you can import it into your Sass files with the statement below.</p>
-
-<pre><code>@import "node_modules/pixel-borders/src/styles/pixel-borders.scss";</code></pre>
-
-        <p>You can also just import the mixins without the demo styles.</p>
-
-<pre><code>@import "node_modules/pixel-borders/src/styles/pixel-borders/pixel-borders-mixins";</code></pre>
+      </section>
 
 
-        <h4>Pixel borders mixin options</h4>
-<pre><code>// Add pixel borders with default options
-@include pixel-borders();
+      <section class="fullwidth demos">
+        <div class="container content flow">
 
-// Available options
-@include pixel-borders(
-  $corner-size: 1,
-  $border-size: 4px,
-  $border-color: #000,
-  $border-inset-color: false
-);
+          <h2>Examples</h2>
+          <h3>Sizes</h3>
 
-// Helper method to create custom styles e.g. colour themes, inset border, highlight
-@include pixel-box(
-  $corner-size,
-  $border-size,
-  $background-color,
-  $border-color: false,
-  $border-inset: true,
-  $border-inset-size: false,
-  $border-inset-color: false,
-  $border-inset-sides: false,
-  $border-inset-color-br: false,
-  $border-inset-color-tl: false 
-);
+          <section class="demo">
+            <div class="group group--min">
+              <button class="pixel-borders pixel-borders--1">Press start 1p</button>
+              <button class="pixel-borders pixel-borders--2">Press start 2p</button>    
+              <button class="pixel-borders pixel-borders--3">Press start 3p</button>
+              <button class="pixel-borders pixel-borders--4">Press start 4p</button>
+            </div>    
+          </section>
+
+
+          <h3>Colours</h3>
+
+          <section class="demo">
+            <div class="group group--min">
+              <button class="pixel-borders pixel-border-theme--primary">Pixel primary</button>
+              <button class="pixel-borders pixel-border-theme--success">Pixel success</button>
+              <button class="pixel-borders pixel-border-theme--warning">Pixel warning</button>
+              <button class="pixel-borders pixel-border-theme--error">Pixel error</button>
+            </div>
+          </section>
+
+
+          <h3>Highlight &amp; Shadow</h3>
+
+          <section class="demo"> 
+            <div class="group group--min">
+              <button class="pixel-borders pixel-borders--inset pixel-borders--inset-hightlight pixel-border-theme--primary">Highlight</button>      
+              <button class="pixel-borders pixel-borders--inset pixel-borders--inset-shadow pixel-border-theme--primary">Shadow</button>      
+              <button class="pixel-borders pixel-borders--inset pixel-borders--inset-all pixel-border-theme--primary">Highlight &amp; Shadow</button>
+            </div>
+          </section>
+
+        </div>
+      </section>
+
+
+      <section class="fullwidth docs">
+        <div class="container content flow">
+
+            <h2>Installation</h2>
+
+<pre><code class="overflow-inline" tabindex="0">$ npm install pixel-borders --save-dev</code></pre>
+
+            <p>Import the files into your project and add the elements to your markup.</p>
+
+            <h3>SASS</h3>
+
+            <p>The default version and used to generate the compiled CSS.</p>
+
+<pre><code class="overflow-inline" tabindex="0">node_modules/pixel-borders/src/styles/pixel-borders/css/styles.css
+node_modules/pixel-borders/src/styles/pixel-borders/sass/pixel-borders.css
 </code></pre>
 
-        <h3>pixel-borders</h3>
+            <h3>PostCSS</h3>
 
-        <div class="table-wrapper">
-        <table class="table">
-          <tr>
-            <th>Property</th>
-            <th>Default</th>
-            <th>Type</th>
-            <th>Description</th>
-          </tr>
-          <tr>
-            <td><code>$corner-size</code></td>
-            <td>1</td>
-            <td>Number</td>
-            <td>Number of pixels taken out of the corner.</td>
-          </tr>
-          <tr>
-            <td><code>$border-size</code></td>
-            <td>4px</td>
-            <td>Number(px)</td>
-            <td>Border size.</td>
-          </tr>
-          <tr>
-            <td><code>$border-color</code></td>
-            <td>#000</td>
-            <td>Hexadecimal color</td>
-            <td>Border colour.</td>
-          </tr>
-          <tr>
-            <td><code>$border-inset-color</code></td>
-            <td>false</td>
-            <td>False/Hexadecimal color</td>
-            <td>Add a inset border to the bottom right in this colour.</td>
-          </tr>
-        </table>
-        </div>
+            <p>Slightly different syntax to the SASS version and requires postcss-advanced-variables to work.</p>
 
-        <h3>pixel-box</h3>
-
-        <div class="table-wrapper">
-        <table class="table">
-          <tr>
-            <th>Property</th>
-            <th>Default</th>
-            <th>Type</th>
-            <th>Description</th>
-          </tr>
-          <tr>
-            <td><code>$corner-size</code></td>
-            <td></td>
-            <td>Number</td>
-            <td>Number of pixels taken out of the corner.</td>
-          </tr>
-          <tr>
-            <td><code>$border-size</code></td>
-            <td></td>
-            <td>Number(px)</td>
-            <td>Border size.</td>
-          </tr>
-          <tr>
-            <td><code>$background-color</code></td>
-            <td></td>
-            <td>Hexadecimal color</td>
-            <td>Background colour for the box, this is used as a base for colour theme.</td>
-          </tr>
-          <tr>
-            <td><code>$border-color</code></td>
-            <td>Darkened <code>$background-color</code></td>
-            <td>False/Hexadecimal colour</td>
-            <td>Border colour.</td>
-          </tr>
-
-          <tr>
-            <td><code>$border-inset</code></td>
-            <td>true</td>
-            <td>Boolean</td>
-            <td>Add a inset border.</td>
-          </tr>
-          <tr>
-            <td><code>$border-inset-size</code></td>
-            <td><code>$border-size</code></td>
-            <td>False/Number(px)</td>
-            <td>Inset border size.</td>
-          </tr>
-          <tr>
-            <td><code>$border-inset-color</code></td>
-            <td>Darkened <code>$background-color</code></td>
-            <td>False/Hexadecimal color</td>
-            <td>Inset border colour.</td>
-          </tr>
-
-          <tr>
-            <td><code>$border-inset-sides</code></td>
-            <td>'bottom-right'</td>
-            <td>String</td>
-            <td>Which sides to add inset border to, 'all', 'top-left' or 'bottom-right'.</td>
-          </tr>
-          <tr>
-            <td><code>$border-inset-sides-br</code></td>
-            <td><code>$border-inset-color</code></td>
-            <td>False/Hexadecimal color</td>
-            <td>Bottom right inset border colour.</td>
-          </tr>
-          <tr>
-            <td><code>$border-inset-sides-tl</code></td>
-            <td>Lightened <code>$background-color</code></td>
-            <td>False/Hexadecimal color</td>
-            <td>Top left inset border colour.</td>
-          </tr>
-        </table>
-        </div>
-
-        <h3>Classes</h3>
-
-        <p>A class of .pixel-borders is applied all elements with a pixel border for demo purposes only, you should be able to add pixel borders to any elements.</p>
-
-        <p>The pixel borders mixin comes with a number of classes defined to demonstrate how it can be used. These can be used as is but I would encourage users to create their own customized classes.</p>
-
-      </div>
-
-
-      <div class="subsection">
-        <h3>Demo site</h3>
-        <p>Clone or download from Github.</p>
-
-<pre><code>$ npm install
-$ gulp serve
+<pre><code class="overflow-inline" tabindex="0">node_modules/pixel-borders/src/styles/pixel-borders/css/styles.css
+node_modules/pixel-borders/src/styles/pixel-borders/postcss/pixel-borders.css
 </code></pre>
 
-      </div>
+            <h3>Compiled CSS</h3>
+
+            <p>Pixel borders is mainly controlled using CSS variables however you will need to manually change the SVG fill colour for a custom border colour.</p>
+
+<pre><code class="overflow-inline" tabindex="0">node_modules/pixel-borders/src/styles/pixel-borders.css
+</code></pre>
 
 
-      <div class="subsection">
-        <h3>Credits</h3>
-        <p>Inspired by the excellent <a href="https://nostalgic-css.github.io/NES.css/" target="_blank" rel="noopener">NES.css</a> which is a full NES-style CSS framework. Pixel borders is intended to be used where only the borders are required.</a>
-        </p>
-      </div>
+          <h3>Markup</h3>
 
+          <pre><code class="overflow-inline" tabindex="0">&lt;button class="pixel-border pixel-borders--1"&gt;Press start 1p&lt;/button&gt;
+</code></pre>
+
+            <h2>Compatibility</h2>
+            <p>Supports all modern browsers at the time of release.</p>
+
+
+            <h2>Demo site</h2>
+            <p>Clone the repo from Github and run the commands below.</p>
+
+            <pre><code class="overflow-inline" tabindex="0">$ npm install
+$ npm run dev
+</code></pre>
+
+        </div>
+      </section>
+    </main>
+
+
+    <footer class="fullwidth space--sm footer">
+      <div class="container content">
+        <div class="group share">
+          <h4 class="share-title">Share this</h4>
+
+          <button class="btn btn--icon-multi share-url" data-share-text-selector="span" data-share-maintain-size="true">
+            <span>Share link</span> 
+            <svg class="icon" aria-hidden="true" viewbox="0 0 24 24"><path d="m3.293 11.293 1.414 1.414L11 6.414V20h2V6.414l6.293 6.293 1.414-1.414L12 2.586l-8.707 8.707z"/></svg>
+            <svg class="icon" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="square" stroke-linejoin="arcs"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" fill="none" /><path d="M22 4 12 14.01l-3-3" fill="none"/></svg>
+          </button>
+          
+          <button class="btn btn--icon-multi share-url" data-share-text-selector="span" data-share-maintain-size="true" data-share-action="clipboard" data-share-text-success="Copied">
+            <span>Copy link</span> 
+            <svg class="icon" aria-hidden="true" viewbox="0 0 24 24"><rect x="8" y="3" width="13" height="13" rx="0" stroke-width="2" stroke-linecap="square" stroke-linejoin="arcs" fill="none"></rect><path d="M4 7v12c0 .6.4 1 1 1h12" stroke-width="2" stroke-linecap="square" stroke-linejoin="arcs" fill="none"></path></svg>
+            
+            <svg class="icon" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="square" stroke-linejoin="arcs"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" fill="none" /><path d="M22 4 12 14.01l-3-3" fill="none"/></svg>
+          </button>
     </div>
 
-
-    <footer class="fullwidth fullwidth--sm footer">
-      <div class="container">
-        Made by Nigel O Toole - <a href="http://www.purestructure.com" target="_blank" rel="noopener">pure structure</a>
+        <nav class="nav footer-nav">
+          <a href="http://www.purestructure.com/nigelotoole" rel="author">Made by Nigel O Toole</a>
+          <a href="https://github.com/nigelotoole" rel="external">GitHub</a>
+          <a data-encode="bWFpbHRvOnB1cmVAcHVyZXN0cnVjdHVyZS5jb20" data-encode-attribute="href" class="encode">Email</a>
+          <a href="http://www.purestructure.com" rel="external" class="w-100">PURE STRUCTURE</a>
+        </nav>
       </div>
     </footer>
+
+
+    <script src="scripts/main.js" type="module"></script>
 
   </body>
 </html>

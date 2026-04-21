@@ -1,0 +1,155 @@
+@import "../css/styles.css";
+
+@mixin pixel-borders($size: 1, $border-color: %23000, $pixel-borders-inset: null) {
+  $svg: '';
+  $svg-path: ''; 
+  $color: $border-color;
+
+  @if $size == 1 {
+    $svg-path: M0 1h1v4H0zM5 1h1v4H5zM1 5h4v1H1zM1 0h4v1H1z;
+    $svg-size: 6;
+    $svg: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="#{$svg-size}" height="#{$svg-size}"><path d="#{$svg-path}" fill="#{$color}" /></svg>';
+    border-image-source: url($svg);
+  }
+  
+  @if $size == 2 {
+    $svg-path: M1 1h1v1H1zM2 0h1v1H2zM0 2h1v1H0zM3 0h3v1H3zM0 3h1v4H0zM1 7h1v1H1zM2 8h1v1H2zM3 8h4v1H3zM7 7h1v1H7zM7 1h1v1H7zM8 2h1v1H8zM6 0h1v1H6zM8 6h1v1H8zM8 3h1v3H8z;
+    $svg-size: 9;
+    $svg: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="#{$svg-size}" height="#{$svg-size}"><path d="#{$svg-path}" fill="#{$color}" /></svg>';
+    border-image-source: url($svg);
+  }
+  
+  @if $size == 3 {
+    $svg-path: M1 2h1v1H1zM2 1h1v1H2zM0 3h1v1H0zM3 0h6v1H3zM0 4h1v4H0zM1 9h1v1H1zM0 8h1v1H0zM2 10h1v1H2zM3 11h5v1H3zM9 10h1v1H9zM8 11h1v1H8zM10 2h1v1h-1zM11 3h1v1h-1zM9 1h1v1H9zM10 9h1v1h-1zM11 4h1v5h-1z;
+    $svg-size: 12;
+    $svg: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="#{$svg-size}" height="#{$svg-size}"><path d="#{$svg-path}" fill="#{$color}" /></svg>';
+    border-image-source: url($svg);
+  }
+  
+  @if $size == 4 {
+    $svg-path: M4 0h7v1H4zM4 14h7v1H4zM1 11H0V4h1zM15 11h-1V4h1zM3 1h1v1H3zM2 2h1v1H2zM1 3h1v1H1zM13 11h1v1h-1zM12 12h1v1h-1zM11 13h1v1h-1zM4 14H3v-1h1zM3 13H2v-1h1zM2 12H1v-1h1zM14 4h-1V3h1zM13 3h-1V2h1zM12 2h-1V1h1z;
+    $svg-size: 15;
+    $svg: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="#{$svg-size}" height="#{$svg-size}"><path d="#{$svg-path}" fill="#{$color}" /></svg>';
+    border-image-source: url($svg);
+  }
+  
+  @if $pixel-borders-inset {
+    @include pixel-borders-inset($pixel-borders-inset);
+  }
+}
+
+@mixin pixel-borders-inset($position: 'bottom-right') {
+
+  &::before {
+    @if $position == 'all' {
+      $background-vertical: linear-gradient(270deg, var(--pb-border-inset-shadow-color) 0% var(--pb-border-width), transparent var(--pb-border-width) 100%), linear-gradient(90deg, var(--pb-border-inset-highlight-color) 0% var(--pb-border-width), transparent var(--pb-border-width) 100%);;
+      background-image: $background-vertical;
+    }
+    
+    @if $position == 'bottom-right' or $position == 'all' {
+      $background-vertical: linear-gradient(270deg, var(--pb-border-inset-shadow-color) 0% var(--pb-border-width), transparent var(--pb-border-width) 100%);
+      background-image: $background-vertical;
+    }
+    
+    @if $position == 'top-left' or $position == 'all' {
+      $background-vertical: linear-gradient(90deg, var(--pb-border-inset-highlight-color) 0% var(--pb-border-width), transparent var(--pb-border-width) 100%);
+      background-image: $background-vertical;
+    }
+  }
+
+  &::after {
+    @if $position == 'all' {
+      $background-horizontal: linear-gradient(0deg, var(--pb-border-inset-shadow-color) 0% var(--pb-border-width), transparent var(--pb-border-width) 100%), linear-gradient(180deg, var(--pb-border-inset-highlight-color) 0% var(--pb-border-width), transparent var(--pb-border-width) 100%);
+      background-image: $background-horizontal;
+    }    
+    
+    @if $position == 'bottom-right' {
+      $background-horizontal: linear-gradient(0deg, var(--pb-border-inset-shadow-color) 0% var(--pb-border-width), transparent var(--pb-border-width) 100%);
+      background-image: $background-horizontal;
+    }
+    
+    @if $position == 'top-left' {
+      $background-horizontal: linear-gradient(180deg, var(--pb-border-inset-highlight-color) 0% var(--pb-border-width), transparent var(--pb-border-width) 100%);
+      background-image: $background-horizontal;
+    }
+  } 
+}
+
+
+.pixel-borders--1 {
+  $pb-size: 1;
+  --pb-size: #{$pb-size};
+  @include pixel-borders($pb-size);
+}
+
+.pixel-borders--2 {
+  $pb-size: 2;
+  --pb-size: #{$pb-size};
+  @include pixel-borders($pb-size);
+}
+
+.pixel-borders--3 {
+  $pb-size: 3;
+  --pb-size: #{$pb-size};
+  @include pixel-borders($pb-size); 
+}
+
+.pixel-borders--4 {
+  $pb-size: 4;
+  --pb-size: #{$pb-size};
+  @include pixel-borders($pb-size);
+}
+
+
+.pixel-borders--inset-hightlight {
+  @include pixel-borders-inset('top-left');
+}
+
+.pixel-borders--inset-shadow {
+  @include pixel-borders-inset('bottom-right'); 
+}
+
+.pixel-borders--inset-all {
+  @include pixel-borders-inset('all'); 
+}
+
+
+.pixel-border-theme--primary {
+  $pb-background-color: rgb(13, 110, 253);
+  $pb-border-color: %230750bc;
+  --pb-background-color: #{$pb-background-color};
+  --pb-border-color: #{$pb-border-color};
+
+  color: #fff;
+  @include pixel-borders(1, $pb-border-color);
+}
+
+.pixel-border-theme--success {
+  $pb-background-color: rgb(25, 135, 84);
+  $pb-border-color: %2310633c;
+  --pb-background-color: #{$pb-background-color};
+  --pb-border-color: #{$pb-border-color};
+
+  color: #fff;
+  @include pixel-borders(1, $pb-border-color);
+}
+
+.pixel-border-theme--warning {
+  $pb-background-color: rgb(255, 193, 7);
+  $pb-border-color: %23be8f04;
+  --pb-background-color: #{$pb-background-color};
+  --pb-border-color: #{$pb-border-color};
+
+  color: #fff;
+  @include pixel-borders(1, $pb-border-color);
+}
+
+.pixel-border-theme--error {
+  $pb-background-color: rgb(220, 53, 69);
+  $pb-border-color: %23a32531;
+  --pb-background-color: #{$pb-background-color};
+  --pb-border-color: #{$pb-border-color};
+
+  color: #fff;
+  @include pixel-borders(1, $pb-border-color);
+}

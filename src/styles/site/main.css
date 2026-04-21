@@ -1,0 +1,37 @@
+@import "reset.css";
+@import "variables.css";
+@import "base.css";
+@import "layout.css";
+
+@import "components.css";
+@import "demo.css";
+
+/* Social image */
+/* body {
+  scale: 1.5;
+  transform-origin: top center;
+}
+
+.header-nav {
+  display: none;
+}
+
+.page-intro {
+  padding-block: 40px 74px;
+}
+
+.page-intro-img {
+  width: 159px;
+} */
+
+/* Portfolio Image */
+/* body {
+  scale: 1.42;
+  transform-origin: top center;
+}
+
+.header, h3 {
+  display: none;
+} */
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1haW4uY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBIiwiZmlsZSI6Im1haW4uY3NzIiwic291cmNlc0NvbnRlbnQiOlsiQGltcG9ydCBcInJlc2V0LmNzc1wiO1xuQGltcG9ydCBcInZhcmlhYmxlcy5jc3NcIjtcbkBpbXBvcnQgXCJiYXNlLmNzc1wiO1xuQGltcG9ydCBcImxheW91dC5jc3NcIjtcblxuQGltcG9ydCBcImNvbXBvbmVudHMuY3NzXCI7XG5AaW1wb3J0IFwiZGVtby5jc3NcIjtcblxuLyogU29jaWFsIGltYWdlICovXG4vKiBib2R5IHtcbiAgc2NhbGU6IDEuNTtcbiAgdHJhbnNmb3JtLW9yaWdpbjogdG9wIGNlbnRlcjtcbn1cblxuLmhlYWRlci1uYXYge1xuICBkaXNwbGF5OiBub25lO1xufVxuXG4ucGFnZS1pbnRybyB7XG4gIHBhZGRpbmctYmxvY2s6IDQwcHggNzRweDtcbn1cblxuLnBhZ2UtaW50cm8taW1nIHtcbiAgd2lkdGg6IDE1OXB4O1xufSAqL1xuXG4vKiBQb3J0Zm9saW8gSW1hZ2UgKi9cbi8qIGJvZHkge1xuICBzY2FsZTogMS41NjU7XG4gIHRyYW5zZm9ybS1vcmlnaW46IHRvcCBjZW50ZXI7XG59XG5cbi5oZWFkZXIge1xuICBkaXNwbGF5OiBub25lO1xufSAqL1xuIl19 */

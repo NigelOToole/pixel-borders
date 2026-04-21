@@ -1,0 +1,130 @@
+@font-face {
+  font-family: "Press Start 2P";
+  src: url("../fonts/press-start-2p.woff2") format("woff2");
+  display: swap;
+}
+.pixel-borders {
+  --pb-size: 1;
+  --pb-border-width: 4px;
+  --pb-border-color: #999;
+  --pb-border-image-width: calc(var(--pb-size) + 1);
+  --pb-background-color: #fff;
+  --pb-border-inset-size: round(up, calc(100% - (var(--pb-border-width) * ((var(--pb-size) - 1) * 2))), 1px);
+  --pb-border-inset-highlight-color: color-mix(in oklch, var(--pb-background-color), #ffffff 10%);
+  --pb-border-inset-shadow-color: color-mix(in oklch, var(--pb-background-color), #000000 10%);
+  display: inline-block;
+  padding: 16px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-family: "Press Start 2P", Arial Black, Arial Bold, Arial, sans-serif;
+  color: #000;
+  text-decoration: none;
+  background-color: var(--pb-background-color);
+  transition: all 0.25s ease;
+  border-style: solid;
+  border-width: var(--pb-border-width);
+  border-color: var(--pb-border-color);
+  border-image-width: var(--pb-border-image-width);
+  border-image-slice: var(--pb-border-image-width);
+  border-radius: round(var(--pb-border-width) * var(--pb-border-image-width) * 1.7, 1px);
+  &:hover, &:focus {
+    background-color: color-mix(in oklch, var(--pb-background-color), #000000 5%);
+  }
+}
+@supports (corner-shape: bevel) {
+  .pixel-borders {
+    corner-shape: bevel;
+    border-radius: calc(var(--pb-border-width) * var(--pb-border-image-width));
+  }
+}
+
+.pixel-borders--inset {
+  position: relative;
+  &::before, &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    place-self: center;
+    z-index: 0;
+    pointer-events: none;
+    width: round(up, 100%, 1px);
+    height: round(up, 100%, 1px);
+  }
+  &::before {
+    height: var(--pb-border-inset-size);
+  }
+  &::after {
+    width: var(--pb-border-inset-size);
+  }
+}
+
+.pixel-borders--1 {
+  --pb-size: 1;
+  border-image-source: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="6" height="6"><path d="M0 1h1v4H0zM5 1h1v4H5zM1 5h4v1H1zM1 0h4v1H1z" fill="%23000" /></svg>');
+}
+
+.pixel-borders--2 {
+  --pb-size: 2;
+  border-image-source: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="9" height="9"><path d="M1 1h1v1H1zM2 0h1v1H2zM0 2h1v1H0zM3 0h3v1H3zM0 3h1v4H0zM1 7h1v1H1zM2 8h1v1H2zM3 8h4v1H3zM7 7h1v1H7zM7 1h1v1H7zM8 2h1v1H8zM6 0h1v1H6zM8 6h1v1H8zM8 3h1v3H8z" fill="%23000" /></svg>');
+}
+
+.pixel-borders--3 {
+  --pb-size: 3;
+  border-image-source: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"><path d="M1 2h1v1H1zM2 1h1v1H2zM0 3h1v1H0zM3 0h6v1H3zM0 4h1v4H0zM1 9h1v1H1zM0 8h1v1H0zM2 10h1v1H2zM3 11h5v1H3zM9 10h1v1H9zM8 11h1v1H8zM10 2h1v1h-1zM11 3h1v1h-1zM9 1h1v1H9zM10 9h1v1h-1zM11 4h1v5h-1z" fill="%23000" /></svg>');
+}
+
+.pixel-borders--4 {
+  --pb-size: 4;
+  border-image-source: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"><path d="M4 0h7v1H4zM4 14h7v1H4zM1 11H0V4h1zM15 11h-1V4h1zM3 1h1v1H3zM2 2h1v1H2zM1 3h1v1H1zM13 11h1v1h-1zM12 12h1v1h-1zM11 13h1v1h-1zM4 14H3v-1h1zM3 13H2v-1h1zM2 12H1v-1h1zM14 4h-1V3h1zM13 3h-1V2h1zM12 2h-1V1h1z" fill="%23000" /></svg>');
+}
+
+.pixel-borders--inset-hightlight::before {
+  background-image: linear-gradient(90deg, var(--pb-border-inset-highlight-color) 0% var(--pb-border-width), transparent var(--pb-border-width) 100%);
+}
+.pixel-borders--inset-hightlight::after {
+  background-image: linear-gradient(180deg, var(--pb-border-inset-highlight-color) 0% var(--pb-border-width), transparent var(--pb-border-width) 100%);
+}
+
+.pixel-borders--inset-shadow::before {
+  background-image: linear-gradient(270deg, var(--pb-border-inset-shadow-color) 0% var(--pb-border-width), transparent var(--pb-border-width) 100%);
+}
+.pixel-borders--inset-shadow::after {
+  background-image: linear-gradient(0deg, var(--pb-border-inset-shadow-color) 0% var(--pb-border-width), transparent var(--pb-border-width) 100%);
+}
+
+.pixel-borders--inset-all::before {
+  background-image: linear-gradient(270deg, var(--pb-border-inset-shadow-color) 0% var(--pb-border-width), transparent var(--pb-border-width) 100%), linear-gradient(90deg, var(--pb-border-inset-highlight-color) 0% var(--pb-border-width), transparent var(--pb-border-width) 100%);
+}
+.pixel-borders--inset-all::after {
+  background-image: linear-gradient(0deg, var(--pb-border-inset-shadow-color) 0% var(--pb-border-width), transparent var(--pb-border-width) 100%), linear-gradient(180deg, var(--pb-border-inset-highlight-color) 0% var(--pb-border-width), transparent var(--pb-border-width) 100%);
+}
+
+.pixel-border-theme--primary {
+  --pb-background-color: rgb(13, 110, 253);
+  --pb-border-color: color-mix(in oklch, rgb(13, 110, 253), #000000 20%);
+  color: #fff;
+  border-image-source: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="6" height="6"><path d="M0 1h1v4H0zM5 1h1v4H5zM1 5h4v1H1zM1 0h4v1H1z" fill="color-mix(in oklch, rgb(13, 110, 253), %23000000 20%)" /></svg>');
+}
+
+.pixel-border-theme--success {
+  --pb-background-color: rgb(25, 135, 84);
+  --pb-border-color: color-mix(in oklch, rgb(25, 135, 84), #000000 20%);
+  color: #fff;
+  border-image-source: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="6" height="6"><path d="M0 1h1v4H0zM5 1h1v4H5zM1 5h4v1H1zM1 0h4v1H1z" fill="color-mix(in oklch, rgb(25, 135, 84), %23000000 20%)" /></svg>');
+}
+
+.pixel-border-theme--warning {
+  --pb-background-color: rgb(255, 193, 7);
+  --pb-border-color: color-mix(in oklch, rgb(255, 193, 7), #000000 20%);
+  color: #fff;
+  border-image-source: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="6" height="6"><path d="M0 1h1v4H0zM5 1h1v4H5zM1 5h4v1H1zM1 0h4v1H1z" fill="color-mix(in oklch, rgb(255, 193, 7), %23000000 20%)" /></svg>');
+}
+
+.pixel-border-theme--error {
+  --pb-background-color: rgb(220, 53, 69);
+  --pb-border-color: color-mix(in oklch, rgb(220, 53, 69), #000000 20%);
+  color: #fff;
+  border-image-source: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="6" height="6"><path d="M0 1h1v4H0zM5 1h1v4H5zM1 5h4v1H1zM1 0h4v1H1z" fill="color-mix(in oklch, rgb(220, 53, 69), %23000000 20%)" /></svg>');
+}
+
+/*# sourceMappingURL=pixel-borders.css.map */
