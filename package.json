@@ -30,7 +30,7 @@
   ],
   "devDependencies": {
     "@11ty/eleventy-dev-server": "^2.0.8",
-    "concurrently": "^9.2.1",
+    "concurrently": "^10.0.3",
     "cross-env": "^10.1.0",
     "postcss": "^8.5.9",
     "postcss-advanced-variables": "^5.0.0",
